@@ -1,2 +1,3 @@
-#INVENTORY
- Inventory for small businesses.
+# INVENTORY
+
+Inventory for small businesses.
