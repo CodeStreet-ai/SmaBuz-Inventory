@@ -84,7 +84,7 @@
             </form>
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link" href="#pablo">
+                <a class="nav-link" href="{{ url_for('login') }}">
                   <i class="now-ui-icons users_single-02"></i>
                   <p>
                     <span class="d-lg-none d-md-block">Account</span>
@@ -107,28 +107,96 @@
               </div>
               <div class="card-body">
             <div class="table-responsive">
-            <form class="form-group row"  data-spreadsheet-api="https://sheet2api.com/v1/bMfLris3RU2Y/purplecurves_products/PRODUCTS-PURPLECURVES" style="margin:auto;">
-              <div class="col-xs-3">
-                <input type="text-form" class="form-control" name="ID" placeholder="Id" />
+              {% with messages = get_flashed_messages() %}
+              {%  if messages %}
+
+              {% for messages in messages %}
+              <div class="alert alert-success alert-dissamble" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="close">
+                  <span aria-hidden="true">x</span>
+                </button>
+              {{ message }}
               </div>
-              <div class="col-xs-3">
-              <input type="text-form" class="form-control" name="NAME" placeholder="Name" />
+              {% endfor %}
+
+              {% endif %}
+              {% endwith %}
+              <!-- Add Products Entries-->
+              <form class="form-group row" action="{{ url_for('tables') }}" method="POST" style="margin:auto;">
+              <div class="col-xs-3" >
+                <input type="text-form" class="form-control" name="code" placeholder="Code" required=1 />
+              </div>
+              <div class="col-xs-3" >
+              <input type="text-form" class="form-control" name="name" placeholder="Name"required=1 />
             </div>
-              <div class="col-xs-3">
-                <input type="text-form" class="form-control" name="QUANTITY" placeholder="Quantity" />
+              <div class="col-xs-3" >
+                <input type="text-form" class="form-control" name="quantity" placeholder="Quantity" required=1 />
               </div>
-              <div class="col-xs-3">
-                <input type="text-form"class="form-control" name="PRICE" placeholder="Price" />
+              <div class="col-xs-3" >
+                <input type="text-form"class="form-control" name="price" placeholder="Price" required=1/>
               </div>
-              <div class="col-xs-3">
+              <div class="col-xs-3" >
                 <button type="submit-form" class="form-control" onClick="alert('Submitted')">Submit</button>
               </div>
-              <iframe src="https://sheet2api.com/table/bMfLris3RU2Y/purplecurves_products/PRODUCTS-PURPLECURVES"
-                  width="100%" height="600" frameBorder="0"
-                style="border: 1px solid #fff;background: transparent;"></iframe>
-          </form>
+              </form>
+              <table class="table">
+                <tr class="text-primary">
 
-        </div>
+                  <th>Code</th>
+                  <th>Name</th>
+                  <th>Quantity</th>
+                  <th>Price</th>
+
+                </tr>
+                {% for row in products %}
+                <tr>
+
+                  <td>{{row.code}}</td>
+                  <td>{{row.name}}</td>
+                  <td>{{row.quantity}}</td>
+                  <td>{{row.price}}</td>
+                  <td class="text-right">
+                    <a href="/tables/{{row.id}}" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#modaledit{{row.id}}">Edit</a>
+                    <a href="/delete/{{row.id}}" class="btn btn-danger btn-xs" onclick="return confirm('Are you sure to delete ?')">Delete</a>
+                  </td>
+                </tr>
+                <!-- Edit PRODUCTS-->
+                <div id="modaledit{{row.id}}" class="modal fade" role='dialog'>
+                    <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header"><h4 class="modal-title">Update Information</h4>
+                        <div class="modal-body">
+                      <form  action="{{url_for('update')}}" method="POST">
+                        <div class="col-xs-3" >
+                          <input type="hidden" name="id" value="{{row.id}}">
+                          <input type="text-form" class="form-control" name="code" placeholder="Code" required=1 value="{{row.code}}" />
+                        </div>
+                        <div class="col-xs-3" >
+                        <input type="text-form" class="form-control" name="name" placeholder="Name"required=1 value="{{row.name}}"/>
+                        </div>
+                        <div class="col-xs-3" >
+                          <input type="text-form" class="form-control" name="quantity" placeholder="Quantity" required=1 value="{{row.quantity}}"/>
+                        </div>
+                        <div class="col-xs-3" >
+                          <input type="text-form"class="form-control" name="price" placeholder="Price" required=1 value="{{row.price}}"/>
+                        </div>
+                        <div class="col-xs-3" >
+                          <button type="submit-form" class="form-control" onClick="alert('Submitted')">Submit</button>
+                        </div>
+                      </form>
+                      </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  </div>
+                  </div>
+                  </div>
+                </div>
+                {% endfor %}
+              </table>
+            </div>
+
+
       </div>
     </div>
   </div>
