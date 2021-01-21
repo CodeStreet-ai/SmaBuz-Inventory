@@ -12,6 +12,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root@localhost/Products
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db= SQLAlchemy(app)
 
+#product table
 class Products(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     code = db.Column(db.String(10))
