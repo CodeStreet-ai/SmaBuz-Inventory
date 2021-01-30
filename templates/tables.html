@@ -49,6 +49,12 @@
               <p> Product Tables</p>
             </a>
           </li>
+          <li >
+            <a href="{{ url_for('profile') }}">
+              <i class="now-ui-icons design_bullet-list-67"></i>
+              <p>Profile</p>
+            </a>
+          </li>
         </ul>
       </div>
     </div>
@@ -162,14 +168,15 @@
                 </tr>
                 <!-- Edit PRODUCTS-->
                 <div id="modaledit{{row.id}}" class="modal fade" role='dialog'>
+
                     <div class="modal-dialog">
                     <div class="modal-content">
-                      <div class="modal-header"><h4 class="modal-title">Update Information</h4>
+                      <div class="card-header text-center"><h4 class="modal-title">Update Information</h4>
                         <div class="modal-body">
                       <form  action="{{url_for('update')}}" method="POST">
-                        <div class="col-xs-3" >
+                        <div class="col-xs-3 " >
                           <input type="hidden" name="id" value="{{row.id}}">
-                          <input type="text-form" class="form-control" name="code" placeholder="Code" required=1 value="{{row.code}}" />
+                          <input type="text-form"  class="form-control" name="code" placeholder="Code" required=1 value="{{row.code}}" />
                         </div>
                         <div class="col-xs-3" >
                         <input type="text-form" class="form-control" name="name" placeholder="Name"required=1 value="{{row.name}}"/>

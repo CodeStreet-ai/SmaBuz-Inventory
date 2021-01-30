@@ -18,26 +18,36 @@
 
   </head>
   <body>
-    <main id="main-holder">
-      <h1 id="login-header">Login</h1>
+    <main >
+      {% extends "base.html" %}
 
-      <form id="login-form" action="" method="post">
-        <div class="col-xs-3">
-          <input type="text-form" id="password-field"class="form-control" placeholder="Username" name="username" value="{{ request.form.username }}">
-        </div>
-        <div class="col-xs-3">
-          <input type="password" id="password-field"class="form-control" placeholder="Password" name="password" value="{{ request.form.password }}">
-        </div>
-        <div class="col-xs-3">
-          <input class="form-control" id="login-form-submit" type="submit" value="Login">
-        </div>
-      </form>
+      {% block content %}
+      <div class="column is-4 is-offset-4">
+          <h3 class="title">Login</h3>
+          <div class="box">
+              <form method="POST" action="/login">
+                  <div class="field">
+                      <div class="control">
+                          <input class="input is-large" type="email" name="email" placeholder="Your Email" autofocus="">
+                      </div>
+                  </div>
 
-      {% if error %}
-      <div id="login-error-holder">
-        <p id="login-error-msg">Error:<span id="error-msg-second-line">{{ error }}</span></p>
+                  <div class="field">
+                      <div class="control">
+                          <input class="input is-large" type="password" name="password" placeholder="Your Password">
+                      </div>
+                  </div>
+                  <div class="field">
+                      <label class="checkbox">
+                          <input type="checkbox">
+                          Remember me
+                      </label>
+                  </div>
+                  <button class="button is-block is-info is-large is-fullwidth">Login</button>
+              </form>
+          </div>
       </div>
-      {% endif %}
+      {% endblock %}
     </main>
   </body>
 </html>
