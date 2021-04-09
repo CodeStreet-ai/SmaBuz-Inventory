@@ -6,7 +6,7 @@ import flask_login
 
 
 global COOKIE_TIME_OUT
-COOKIE_TIME_OUT = 60 *10 #600 SECONDS COOKIE_TIME_OUT
+COOKIE_TIME_OUT = 60 *1000 #600 SECONDS COOKIE_TIME_OUT
 
 
 #WELCOME PAGE
@@ -29,8 +29,11 @@ def login():
 def index():
     if 'email' in session:
         username_sess = session['email']
+
         user_r = Users.query.filter_by(email=username_sess).first()
-        return render_template("index.html", user_r=user_r)
+        data = Products.query.filter_by(product_id=user_r.id)
+        sum_p = sum([price.price for price in data])
+        return render_template("index.html", products = data,user_r=user_r,sum_p=sum_p)
     else:
         return redirect('/login')
 #PROFILE

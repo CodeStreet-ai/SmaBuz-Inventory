@@ -4,13 +4,14 @@
 <head>
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <!-- Icons -->
   <link rel="apple-touch-icon" sizes="76x76" href="https://www.flaticon.com/svg/static/icons/svg/2835/2835657.svg">
   <link rel="icon" type="image/png" href="https://www.flaticon.com/svg/static/icons/svg/2835/2835657.svg">
   <title>
     SMABUZ Inventory
   </title>
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
-  <!--  Fonts and icons     -->
+  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
   <!-- CSS Files -->
@@ -25,14 +26,14 @@
       <!--
         Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"-->
 
-      <div class="logo">
-        <a href="" class="simple-text logo-mini">
-        <!-- -->
-        </a>
-        <a href="index.html" class="simple-text logo-normal">
-          SMABUZ Inventory
-        </a>
-      </div>
+        <div class="logo">
+          <a href="#" class="simple-text logo-mini">
+            <img alt="icon" src="https://www.flaticon.com/svg/static/icons/svg/2835/2835657.svg">
+          </a>
+          <a href="#" class="simple-text logo-normal">
+            SMABUZ Inventory
+          </a>
+        </div>
       <div class="sidebar-wrapper" id="sidebar-wrapper">
         <ul class="nav">
           <li class="active ">
@@ -104,12 +105,15 @@
                 <h5 class="card-category">Products</h5>
                 <h4 class="card-title">Quantity</h4>
               </div>
-              <div class="card-body">
+              <div class="card-body text-center">
                 <div class="chart-area">
-                  <canvas id=""></canvas>
+                  <h1 >{{ products.count() }}</h1>
                 </div>
               </div>
-              <div class="card-footer">
+              <div class="card-footer text-muted">
+                <div class="stats">
+                  <i class="now-ui-icons arrows-1_refresh-69"></i> Just Updated
+                </div>
               </div>
             </div>
           </div>
@@ -119,12 +123,17 @@
                 <h5 class="card-category">Products</h5>
                 <h4 class="card-title">Prices</h4>
               </div>
-              <div class="card-body">
+              <div class="card-body text-center">
                 <div class="chart-area">
-                  <canvas id=""></canvas>
+
+                  <h1>&euro; {{ sum_p }}</h1>
+
                 </div>
               </div>
             <div class="card-footer">
+              <div class="stats">
+                <i class="now-ui-icons arrows-1_refresh-69"></i> Just Updated
+              </div>
           </div>
         </div>
       </div>

@@ -3,6 +3,7 @@
 
 <head>
   <meta charset="utf-8" />
+  <!-- Icons -->
   <link rel="apple-touch-icon" sizes="76x76" href="https://www.flaticon.com/svg/static/icons/svg/2835/2835657.svg">
   <link rel="icon" type="image/png" href="https://www.flaticon.com/svg/static/icons/svg/2835/2835657.svg">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -10,13 +11,13 @@
     SMABUZ Inventory
   </title>
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
-  <!--     Fonts and icons     -->
+  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
   <!-- CSS Files -->
-  <link type='text/css' href="{{ url_for('static' , filename='assets/css/bootstrap.min.css') }}" rel="stylesheet" />
-  <link type='text/css' href="{{ url_for('static' , filename='assets/css/now-ui-dashboard.css') }}" rel="stylesheet" />
-  <link type='text/css'href="{{ url_for('static' , filename='styles/styles.css') }}" rel="stylesheet" />
+  <link type='text/css' href="{{ url_for('static' , filename='assets/css/bootstrap.min.css') }}" rel="stylesheet" /><!--../static/assets/css/bootstrap.min.css-->
+  <link type='text/css' href="{{ url_for('static' , filename='assets/css/now-ui-dashboard.css') }}" rel="stylesheet" /> <!--../static/assets/css/now-ui-dashboard.css-->
+  <link type='text/css'href="{{ url_for('static' , filename='styles/styles.css') }}" rel="stylesheet" /> <!--../static/styles/styles.css-->
 
 
 </head>
@@ -29,7 +30,7 @@
     -->
       <div class="logo">
         <a href="#" class="simple-text logo-mini">
-          <!-- -->
+          <img alt="icon" src="https://www.flaticon.com/svg/static/icons/svg/2835/2835657.svg">
         </a>
         <a href="#" class="simple-text logo-normal">
           SMABUZ Inventory
@@ -112,15 +113,15 @@
           <div class="col-md-12">
             <div class="card">
               <div class="card-header">
-                <h4 class="card-title">Products</h4>
+                <h5 class="title">Products</h5>
               </div>
-              <div class="card-body">
-            <div class="table-responsive">
+
+
               {% with messages = get_flashed_messages() %}
               {%  if messages %}
 
               {% for messages in messages %}
-              <div class="alert alert-success alert-dissamble" role="alert">
+              <div class="form-group has-success" role="alert">
                 <button type="button" class="close" data-dismiss="alert" aria-label="close">
                   <span aria-hidden="true">x</span>
                 </button>
@@ -133,7 +134,7 @@
               <!-- Add Products Entries-->
               <form class="form-group row" action="{{ url_for('tables') }}" method="POST" style="margin:auto;">
               <div class="col-xs-3" >
-                <input type="text-form" class="form-control" name="code" placeholder="Code" required=1 />
+                <input type="text-form" class="form-control" name="code" placeholder="Id" required=1 />
               </div>
               <div class="col-xs-3" >
               <input type="text-form" class="form-control" name="name" placeholder="Name"required=1 />
@@ -148,61 +149,68 @@
                 <button type="submit-form" class="form-control" onClick="alert('Submitted')">Submit</button>
               </div>
               </form>
+          <div class="card-body">
+            <div class="table-responsive">
               <table class="table">
-                <tr class="text-primary">
-
-                  <th>Code</th>
+                <thead class="text-primary">
+                  <th>Id</th>
                   <th>Name</th>
                   <th>Quantity</th>
                   <th>Price</th>
-
-                </tr>
+                  <th class=text-right>Actions</th>
+                </thead>
                 {% for row in products %}
-                <tr>
+
+                <tbody>
+                  <tr>
 
                   <td>{{row.code}}</td>
                   <td>{{row.name}}</td>
                   <td>{{row.quantity}}</td>
-                  <td>{{row.price}}</td>
-                  <td class="text-right">
-                    <a href="/tables/{{row.id}}" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#modaledit{{row.id}}">Edit</a>
-                    <a href="/delete/{{row.id}}" class="btn btn-danger btn-xs" onclick="return confirm('Are you sure to delete ?')">Delete</a>
-                  </td>
+                  <td>&euro; {{row.price}}</td>
+                  <th class="text-right">
+                    <a href="/tables/{{row.id}}" class="btn-warning" data-toggle="modal" data-target="#modaledit{{row.id}}">Edit</a>
+                    <a href="/delete/{{row.id}}" class="btn-danger" onclick="return confirm('Are you sure to delete ?')">Delete</a>
+                  </th>
                 </tr>
                 <!-- Edit PRODUCTS-->
-                <div id="modaledit{{row.id}}" class="modal fade" role='dialog'>
-
-                    <div class="modal-dialog">
+                <div id="modaledit{{row.id}}" class="modal fade" role='dialog' aria-labelledby="myModalLabel" aria-hidden="true" tabindex="-1">
+                    <div class="modal-dialog" role="form">
                     <div class="modal-content">
-                      <div class="card-header text-center"><h4 class="modal-title">Update Information</h4>
-                        <div class="modal-body">
-                      <form  action="{{url_for('update')}}" method="POST">
-                        <div class="col-xs-3 " >
-                          <input type="hidden" name="id" value="{{row.id}}">
-                          <input type="text-form"  class="form-control" name="code" placeholder="Code" required=1 value="{{row.code}}" />
-                        </div>
-                        <div class="col-xs-3" >
-                        <input type="text-form" class="form-control" name="name" placeholder="Name"required=1 value="{{row.name}}"/>
-                        </div>
-                        <div class="col-xs-3" >
-                          <input type="text-form" class="form-control" name="quantity" placeholder="Quantity" required=1 value="{{row.quantity}}"/>
-                        </div>
-                        <div class="col-xs-3" >
-                          <input type="text-form"class="form-control" name="price" placeholder="Price" required=1 value="{{row.price}}"/>
-                        </div>
-                        <div class="col-xs-3" >
-                          <button type="submit-form" class="form-control" onClick="alert('Submitted')">Submit</button>
-                        </div>
-                      </form>
+                      <div class="modal-header">
+                        <h5 class="modal-title">Edit Entries</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                       </div>
-                  </div>
+                        <div class="modal-body">
+                          <form action="{{url_for('update')}}" method="POST">
+                            <div class="form-row">
+                              <div class="col">
+                                <input type="hidden" name="id" value="{{row.id}}">
+                                <input class="form-control" name="code" placeholder="Id" required=1 value="{{row.code}}" />
+                              </div>
+                              <div class="col">
+                                <input class="form-control" name="name" placeholder="Name"required=1 value="{{row.name}}"/>
+                              </div>
+                              <div class="col">
+                                <input class="form-control" name="quantity" placeholder="Quantity" required=1 value="{{row.quantity}}"/>
+                              </div>
+                              <div class="col">
+                                <input class="form-control" name="price" placeholder="Price" required=1 value="{{row.price}}"/>
+                              </div>
+                            </div>
+                    </div>
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-defult btn-simple" data-dismiss="modal">Close</button>
+                    <button class="btn btn-info btn-simple"  onClick="alert('Submitted')">Save</button>
                   </div>
+                  </form>
                   </div>
                   </div>
                 </div>
+
                 {% endfor %}
+
+                </tbody>
               </table>
             </div>
 
