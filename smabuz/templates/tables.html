@@ -116,21 +116,22 @@
                 <h5 class="title">Products</h5>
               </div>
 
-
-              {% with messages = get_flashed_messages() %}
-              {%  if messages %}
-
-              {% for messages in messages %}
-              <div class="form-group has-success" role="alert">
-                <button type="button" class="close" data-dismiss="alert" aria-label="close">
-                  <span aria-hidden="true">x</span>
-                </button>
-              {{ message }}
-              </div>
-              {% endfor %}
-
-              {% endif %}
-              {% endwith %}
+            {% with messages = get_flashed_messages() %}
+                {%  if messages %}
+                  {% for messages in messages %}
+                  <div class="alert alert-success" role="alert">
+                    <div class="container">
+                      <strong>Success!</strong> {{ messages }}
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">
+                          <i class="now-ui-icons ui-1_simple-remove"></i>
+                        </span>
+                      </button>
+                    </div>
+                  </div>
+                  {% endfor %}
+                {% endif %}
+            {% endwith %}
               <!-- Add Products Entries-->
               <form class="form-group row" action="{{ url_for('tables') }}" method="POST" style="margin:auto;">
               <div class="col-xs-3" >
@@ -167,7 +168,7 @@
                   <td>{{row.code}}</td>
                   <td>{{row.name}}</td>
                   <td>{{row.quantity}}</td>
-                  <td>&euro; {{row.price}}</td>
+                  <td>&#8358;{{row.price}}</td>
                   <th class="text-right">
                     <a href="/tables/{{row.id}}" class="btn-warning" data-toggle="modal" data-target="#modaledit{{row.id}}">Edit</a>
                     <a href="/delete/{{row.id}}" class="btn-danger" onclick="return confirm('Are you sure to delete ?')">Delete</a>
