@@ -4,20 +4,23 @@
 <head>
   <meta charset="utf-8" />
   <!-- Icons -->
-  <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
-  <link rel="icon" type="image/png" href="../assets/img/favicon.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://www.flaticon.com/svg/static/icons/svg/2835/2835657.svg">
+  <link rel="icon" type="image/png" href="https://www.flaticon.com/svg/static/icons/svg/2835/2835657.svg">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
     SMABUZ Inventory
   </title>
+  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
   <!-- CSS Files -->
-  <link type='text/css' href="{{ url_for('static' , filename='assets/css/bootstrap.min.css') }}" rel="stylesheet" />
-  <link type='text/css' href="{{ url_for('static' , filename='assets/css/now-ui-dashboard.css') }}" rel="stylesheet" />
-  <link type='text/css'href="{{ url_for('static' , filename='styles/styles.css') }}" rel="stylesheet" />
+  <link type='text/css' href="{{ url_for('static' , filename='assets/css/bootstrap.min.css') }}" rel="stylesheet" /><!--../static/assets/css/bootstrap.min.css-->
+  <link type='text/css' href="{{ url_for('static' , filename='assets/css/now-ui-dashboard.css') }}" rel="stylesheet" /> <!--../static/assets/css/now-ui-dashboard.css-->
+  <link type='text/css'href="{{ url_for('static' , filename='styles/styles.css') }}" rel="stylesheet" /> <!--../static/styles/styles.css-->
 
+
+</head>
 <body class="user-profile">
   <div class="wrapper ">
     <div class="sidebar" data-color="blue">
@@ -123,25 +126,31 @@
 
         </div>
       </div>
-    <footer class="footer">
-      <div class=" container-fluid ">
-        <nav>
-          <ul>
-            <li>
-              <a >
-                Olaoluwa Oluwasanya
-              </a>
-            </li>
-          </ul>
-        </nav>
-      <div class="copyright" id="copyright">
-        <a  href="http://www.twitter.com/vant7ge"target="_blank"rel="noopener noreferrer">CONTACT ME!</a>
-          <!-- social media-->
+      <footer class="footer">
+        <div class=" container-fluid ">
+          <nav>
+            <ul>
+              <li>
+                <a href="https://github.com/CodeStreet-ai/SmaBuz-Inventory">
+                  SMABUZ INVENTORY
+                </a>
+              </li>
+              <li>
+                <a href="https://github.com/CodeStreet-ai">
+                  CODESTREET-AI
+                </a>
+              </li>
+            </ul>
+          </nav>
+          <div class="copyright" id="copyright">
+            <a  href="http://www.twitter.com/vant7ge"target="_blank"rel="noopener noreferrer">CONTACT ME!</a>
+            <!-- social media-->
+          </div>
         </div>
-      </div>
       </footer>
   </div>
 </div>
+
 <!--   Core JS Files   -->
 <script src="{{ url_for('static', filename='assets/js/core/jquery.min.js') }}"></script>
 <script src="{{ url_for('static', filename='assets/js/core/popper.min.js') }}"></script>
