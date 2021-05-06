@@ -6,7 +6,7 @@ import flask_login
 
 
 global COOKIE_TIME_OUT
-COOKIE_TIME_OUT = 60 *1000 #600 SECONDS COOKIE_TIME_OUT
+COOKIE_TIME_OUT = 60 *1000 #6000 SECONDS COOKIE_TIME_OUT
 
 
 #WELCOME PAGE
@@ -117,18 +117,22 @@ def logout():
     return redirect('/')
 
 #PRODUCTS TABLE
-@app.route("/tables")
-def tables():
+@app.route("/tables", methods=['GET', 'POST'], defaults= {"page" : 1 })
+@app.route('/tables/<int:page>', methods=['GET', 'POST'])
+def tables(page):
     if 'email' in session:
+        page = page
+        pages = 7
         username_sess = session['email']
         user_r = Users.query.filter_by(email=username_sess).first()
 
         #filter product => product_id (one -many relationship with users)
-        data = Products.query.filter_by(product_id=user_r.id)
+        #data = Products.query.filter_by(product_id=user_r.id)
+        #data = Products.query.paginate(page,pages,error_out=False)
+        data = Products.query.filter_by(product_id=user_r.id).order_by(Products.id.asc()).paginate(page,pages,error_out=False)
         return render_template("tables.html", products = data,user_r=user_r)
     else:
         return redirect('/login')
-
 
 
 #ADD ENTRY ROUTE

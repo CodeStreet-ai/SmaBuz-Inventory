@@ -79,9 +79,11 @@
             <span class="navbar-toggler-bar navbar-kebab"></span>
           </button>
           <div class="collapse navbar-collapse justify-content-end" id="navigation">
-            <form>
+            <form action="" method="POST">
+              <div class="col-8">
+              </div>
               <div class="input-group no-border">
-                <input type="text" value="" class="form-control" placeholder="Search...">
+                <input type="text" name="tag" id="tag"class="form-control" placeholder="Search..." disabled>
                 <div class="input-group-append">
                   <div class="input-group-text">
                     <i class="now-ui-icons ui-1_zoom-bold"></i>
@@ -154,17 +156,18 @@
             <div class="table-responsive">
               <table class="table">
                 <thead class="text-primary">
+                  <th><input type="checkbox" onclick="CheckAll (this)"></th>
                   <th>Id</th>
                   <th>Name</th>
                   <th>Quantity</th>
                   <th>Price</th>
                   <th class=text-right>Actions</th>
                 </thead>
-                {% for row in products %}
+                {% for row in products.items %}
 
                 <tbody>
                   <tr>
-
+                  <td><input type="checkbox" name=""></td>
                   <td>{{row.code}}</td>
                   <td>{{row.name}}</td>
                   <td>{{row.quantity}}</td>
@@ -213,6 +216,36 @@
 
                 </tbody>
               </table>
+              <nav aria-label="...">
+                <ul class="pagination">
+
+                  {% if products.has_prev %}
+                  <li class="page-item"><a class="page-link" href="{{ url_for('tables' , page=products.prev_num) }}">Previous</a></li>
+                  {% else %}
+                  <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
+                  {% endif %}
+
+                  {% for page in products.iter_pages(left_edge=3, right_edge=3) %}
+                  {% if page %}
+                    {% if page == products.page %}
+                        <li class="page-item active"><a class="page-link" href="{{ url_for('tables', page=page) }}">{{ page }}<a/></li>
+                    {% else %}
+                        <li class="page-item"><a class="page-link" href="{{ url_for('tables', page=page) }}">{{ page }}<a/></li>
+                    {% endif %}
+
+                  {% else %}
+                  <li class="page-item disabled" id="example_ellipsis"><a href="#" class="page-link">...<a/></li>
+                  {% endif %}
+                  {% endfor %}
+
+                  {% if products.has_next %}
+                  <li class="page-item"><a class="page-link" href="{{ url_for('tables' , page=products.next_num) }}">Next</a></li>
+                  {% else %}
+                  <li class="page-item disabled"><a class="page-link" href="#">Next</a></li>
+                  {% endif %}
+                </ul>
+
+              </nav>
             </div>
 
 
@@ -245,6 +278,19 @@
   </footer>
   </div>
 </div>
+<!--checkbox script-->
+<script type="text/javascript">
+  function CheckAll(box) {
+    var cbs = document.getElementsByTagName('input');
+    for(var i=0; i < cbs.length; i++) {
+      if (cbs[i].type == 'checkbox') {
+        cbs[i].checked = box.checked;
+      }
+    }
+  }
+
+
+</script>
 
 <!--   Core JS Files   -->
 <script src="{{ url_for('static', filename='assets/js/core/jquery.min.js') }}"></script>
