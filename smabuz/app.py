@@ -1,7 +1,7 @@
 from config import Config
 
 from flask import Flask
-from datetime import datetime, timedelta
+from datetime import timedelta
 
 
 #init app
