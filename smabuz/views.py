@@ -1,8 +1,7 @@
-from flask import Flask,render_template,redirect, url_for, request, flash, session, make_response
+from flask import render_template,redirect, url_for, request, flash, session, make_response
 from werkzeug.security import generate_password_hash, check_password_hash
 from app import app
 from models import *
-import flask_login
 
 
 global COOKIE_TIME_OUT
