@@ -22,7 +22,7 @@ jobs:
           command: |
             . venv/bin/activate
             cd ~/Smabuz-Inventory/smabuz/
-            python3 tests.py 
+            python3 test.py 
       - store_artifacts:
           path: test-reports/
           destination: SmaBuz-Inventory       
