@@ -1,8 +1,8 @@
 version: 2.1
 jobs:
-  run_tests:
+  build:
     docker:
-      - image: circleci/python3.8
+      - image: circleci/python:3.8
     steps:
       - checkout
       - restore_cache:
