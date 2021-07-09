@@ -20,10 +20,11 @@ jobs:
           paths:
             - "venv"            
       - run:
+          working_directory: ~/Smabuz-Inventory/smabuz   
           name: Running Tests
           command: |
             . venv/bin/activate
-            cd /smabuz
-            python3 test.py       
+            python3 test.py
+    
  
 
