@@ -37,13 +37,13 @@ python3 main.py
 ### 7. Copy below links to your browser:
 To see home page:
 ```html
-http://localhost:8000   
+http://localhost:5000  
 ```
 To see login page:
 ```html
-http://localhost:8000/login
+http://localhost:5000/login
 ```
 To see signup page:
 ```html
-http://localhost:8000/signup
+http://localhost:5000/signup
 ```
