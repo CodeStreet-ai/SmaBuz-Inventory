@@ -21,7 +21,7 @@ jobs:
           name: Running Tests
           command: |
             . venv/bin/activate
-            cd ~/Smabuz-Inventory/smabuz
+            cd ~/Smabuz-Inventory/smabuz/
             python3 tests.py 
       - store_artifacts:
           path: test-reports/
