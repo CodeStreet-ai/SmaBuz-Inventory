@@ -1,10 +1,12 @@
 version: 2.1
 jobs:
   build:
+    working_directory: ~/Smabuz-Inventory/smabuz
     docker:
       - image: circleci/python:3.8
     steps:
-      - checkout
+      - checkout:
+          path: ~/Smabuz-Inventory
       - restore_cache:
           key: deps1-{{ .Branch }}-{{ checksum "requirements.txt" }}      
       - run:
@@ -22,9 +24,6 @@ jobs:
           command: |
             . venv/bin/activate
             cd ~/Smabuz-Inventory/smabuz/
-            python3 test.py 
-      - store_artifacts:
-          path: test-reports/
-          destination: SmaBuz-Inventory       
+            python3 test.py       
  
 
