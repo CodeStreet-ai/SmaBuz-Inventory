@@ -5,8 +5,6 @@ jobs:
     docker:
       - image: circleci/python:3.8
     steps:
-      - checkout:
-          path: ~/Smabuz-Inventory
       - restore_cache:
           key: deps1-{{ .Branch }}-{{ checksum "requirements.txt" }}      
       - run:
@@ -18,9 +16,10 @@ jobs:
       - save_cache:
           key: deps1-{{ .Branch }}-{{ checksum "requirements.txt" }}
           paths:
-            - "venv"            
-      - run:
-          working_directory: ~/Smabuz-Inventory/smabuz   
+            - "venv"
+      - checkout:
+          path: ~/Smabuz-Inventory/smabuz                       
+      - run: 
           name: Running Tests
           command: |
             . venv/bin/activate
