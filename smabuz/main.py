@@ -1,5 +1,6 @@
 import os
 from models import *
+import views
 from app import app
 
 
