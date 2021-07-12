@@ -6,3 +6,4 @@ smabuz/static/assets/js/core * linguist-vendored
 smabuz/static/assets/js/plugins * linguist-vendored
 *.js linguist-vendored
 *.js.map linguist-vendored
+*.min.js linguist-vendored
