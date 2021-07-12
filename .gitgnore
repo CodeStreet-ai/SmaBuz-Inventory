@@ -1,1 +1,9 @@
 __pycache__
+
+### Sass ###
+.sass-cache/
+*.css.map
+
+
+### css###
+*.css
