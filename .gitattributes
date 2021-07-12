@@ -1,2 +1,2 @@
-smabuz/static/* linguist-vendored
-smabuz/templates/* linguist-vendored
+smabuz/static/* linguist-detectable=false
+smabuz/templates/* linguist-detectable=false
