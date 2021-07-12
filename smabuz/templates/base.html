@@ -1,37 +1,100 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title></title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/main.css') }}">
-  </head>
-  <body>
-    <div class="hero-bg">
-      <section class="top">
-        <header>
-          <img alt="icon" width="50" height="50" src="https://www.flaticon.com/svg/static/icons/svg/2835/2835657.svg">
-          <a href="#">SMABUZ</a>
-        </header>
-        <h1><span >A Simple</span>INVENTORY</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-        <div class="form-container">
-          <form action="{{ url_for('adduser') }}"method="GET">
-            <div class="form-left">
-              <label >Get Started</label>
-              <input class="button1"type="submit"value="Sign Up">
-            </div>
-          </form>
-        </div>
-      </section>
-    </div>
+<head>
+  <meta charset="utf-8" />
+  <!-- Icons -->
+  <link rel="apple-touch-icon" sizes="76x76" href="https://www.flaticon.com/svg/static/icons/svg/2835/2835657.svg">
+  <link rel="icon" type="image/png" href="https://www.flaticon.com/svg/static/icons/svg/2835/2835657.svg">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <title>
+    SMABUZ Inventory
+  </title>
+  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+  <!-- CSS Files -->
+  <link type='text/css' href="{{ url_for('static' , filename='assets/css/bootstrap.min.css') }}" rel="stylesheet" /><!--../static/assets/css/bootstrap.min.css-->
+  <link type='text/css' href="{{ url_for('static' , filename='assets/css/now-ui-dashboard.css') }}" rel="stylesheet" /> <!--../static/assets/css/now-ui-dashboard.css-->
+  <link type='text/css'href="{{ url_for('static' , filename='assets/css/now-ui-kit.css') }}" rel="stylesheet" /> <!--../static/styles/styles.css-->
 
-    <section class="about">
-      <div class="right-col">
-        <h2>Simple. Small.</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+
+</head>
+  <body class="landing-page sidebar-collapse">
+    <nav class="navbar navbar-expand-lg bg-primary fixed-top navbar-transparent " color-on-scroll="400">
+      <div class="container">
+        <div class="navbar-translate">
+          <a><img width="50" height="50" alt="icon" src="https://www.flaticon.com/svg/static/icons/svg/2835/2835657.svg"></a>
+          <a class="navbar-brand" href="#" rel="tooltip" data-placement="bottom" target="_blank">
+            SMABUZ INVENTORY
+          </a>
+          <button class="navbar-toggler navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-bar top-bar"></span>
+            <span class="navbar-toggler-bar middle-bar"></span>
+            <span class="navbar-toggler-bar bottom-bar"></span>
+          </button>
+        </div>
+        <div class="collapse navbar-collapse justify-content-end" id="navigation" data-nav-image="../static/assets/img/blurred-image-1.jpg">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('login') }}">login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('adduser') }}">get started</a>
+            </li>
+          </ul>
+        </div>
       </div>
-    </section>
+    </nav>
+
+    <div class="wrapper">
+      <div class="page-header page-header-small">
+        <div class="page-header-image" data-parallax="true" style="background-image: url('../static/assets/img/bg1.jpg');">
+        </div>
+        <div class="content-center">
+          <div class="container">
+            <h1 class="title">Ensure nothing goes wrong.</h1>
+            <div class="text-center">
+              <!-- Circle Social media icons-->
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="section section-about-us">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-8 ml-auto mr-auto text-center">
+              <h2 class="title">What we do?</h2>
+              <h5 class="description">This a inventory management system for small scale businesses.SMABUZ helps to keep accurate record of your stocks -products, prices and any other important information about your business to ensure nothing goes missing.</h5>
+            </div>
+          </div>
+          <div class="separator separator-primary"></div>
+          <div class="section-story-overview">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="image-container image-left" style="background-image: url('../static/assets/img/bg2.jpg')">
+                </div>
+              </div>
+              <div class="col-md-5">
+                <div class="image-container image-right" style="background-image: url('../static/assets/img/bg3.jpg')"></div>
+                <h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="section section-contact-us text-center">
+        <div class="container">
+          <h2 class="title">Want to help out?</h2>
+          <p class="description">Are you a Developer?<a href="https://github.com/CodeStreet-ai/SmaBuz-Inventory">or want to Support us</a></p>
+          <div class="row">
+          </div>
+        </div>
+      </div>
+      {% include "includes/footer.html" %}
+    </div>
+    {% include "includes/script.html" %}
   </body>
 </html>
