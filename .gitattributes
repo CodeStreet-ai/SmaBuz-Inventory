@@ -1,2 +1,3 @@
-smabuz/static/* linguist-detectable=false
-smabuz/templates/* linguist-detectable=false
+smabuz/static/* linguist-vendored
+smabuz/templates/* linguist-vendored
+smabuz/static/assets/css/* linguist-vendored
