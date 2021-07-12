@@ -1,0 +1,5 @@
+*.css linguist-vendored
+*.js.map linguist-vendored
+*.js linguist-vendored
+*.min.js linguist-vendored
+*.html linguist-vendored
