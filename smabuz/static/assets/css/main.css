@@ -1,0 +1,289 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  margin: 0;
+  background: url('../img/img-1.jpg');
+}
+
+.hero-bg{
+  background-position: 12% 83%;
+  color: white;
+  text-align: center;
+  padding-bottom: 4em;
+
+
+}
+
+header {
+  padding: 1em 0;
+}
+
+.hero-bg a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+section{
+  margin: 0 1em;
+}
+
+h1{
+  font-size: 2.5rem;
+  margin: 2em 0 1.2em;
+
+}
+
+h1 span {
+  text-transform: uppercase;
+  display: block;
+  font-size: 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+h1 span::before{
+  content: '';
+  position: absolute;
+  width: 3em;
+  background: #8A2632;
+  height: .4em;
+  bottom: 0;
+  z-index: -1;
+  margin-left: -.3em;
+}
+
+.hero-bg p {
+  font-weight: bold;
+  margin: 0 1em 3em;
+
+}
+
+.form-container {
+  margin: 2em -1em 0;
+  padding: 2em;
+
+}
+
+
+.button1{
+  background-color: #494379;
+  color: white;
+  border: none;
+  width: 100%;
+  font-weight: bold;
+  padding: 1em 0;
+  border-radius: 7em;
+  font-size: 1.3em;
+  cursor: pointer;
+
+}
+.button1:hover {
+  background-color: rgb(73,67,110);
+}
+
+.about {
+  margin: 0;
+
+}
+
+.right-col {
+  color:white;
+  text-align: center;
+  margin: 3em 1em;
+}
+
+h2{
+  text-transform: uppercase;
+  position: relative;
+
+}
+
+h2::before{
+  content: '';
+  position: absolute;
+  width: 7em;
+  background: #495997;
+  height: .4em;
+  bottom: 0;
+  z-index: -1;
+  margin-left: -.3em;
+}
+
+.about p {
+  font-weight: bold;
+  margin: 0 1em 3em;
+
+}
+
+p{
+  line-height: 1.5em;
+}
+
+
+
+
+@media (min-width: 730px) {
+  section {
+    margin: 0 4em;
+  }
+  .form-container {
+    margin: 2em -4em 0;
+
+    padding: 4em;
+  }
+}
+
+@media (min-width: 930px) {
+  .hero-bg {
+    text-align: left;
+  }
+  .hero-bg p {
+    margin: 0 0 3em;
+  }
+  .hero-bg section {
+    width: 65%;
+  }
+  .form-container {
+    margin: 2em 0 0;
+    padding: 1.5em;
+    border-radius: .5em;
+    box-shadow: 10px 10px 10px rgba(0,0,0, .1);
+    width: 60%;
+  }
+
+  .form-left {
+    width: 70%;
+  }
+  label {
+    margin: 0;
+  }
+  .button1 {
+    height: fit-content;
+    font-size: 1.1em;
+    margin-left: 8em;
+    margin-top: 1.9em;
+    padding: .7em 0;
+    width: 50%;
+  }
+  .hero-bg p {
+    margin-bottom: 0;
+  }
+
+  .right-col {
+    grid-area: content;
+    padding: 5% ;
+    text-align: left;
+  }
+}
+
+.top {
+  animation: fadeIn 2s forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-2em);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.form-box {
+  height: 320px;
+  position: relative;
+  margin: 6% auto;
+  padding: 5px;
+  border-radius: .5em;
+  box-shadow: 10px 10px 10px rgba(0,0,0, .3);
+  overflow: hidden;
+}
+
+.button2 {
+  width: 220px;
+  margin: 35px auto;
+  position: relative;
+  /*box-shadow: 0 0 1px 3px #fff; */
+  border-radius: .5em;
+}
+
+.toggle-btn {
+  color: white;
+  padding: 10px 30px;
+  cursor: pointer;
+  background: transparent;
+  border: 0;
+  outline: none;
+  position: relative;
+}
+
+
+.input-group {
+  top: 50px;
+  position: absolute;
+  transition: .5s;
+}
+.input-field {
+  width: 100%;
+  padding: 10px 0;
+  margin: 5px 0;
+  border-left: 0;
+  border-top: 0;
+  border-right: 0;
+  border-bottom: 1px solid white;
+  outline: none;
+  background: transparent;
+}
+
+.submit-btn {
+  width: 85%;
+  padding: 10px 30px;
+  cursor: pointer;
+  display: block;
+  margin: auto;
+  background: #DC143C;
+  border: 0;
+  outline: none;
+  border-radius: 3em;
+}
+
+.check-box {
+  margin: 20px 10px 20px 0;
+}
+
+span {
+  color: white;
+  font-size: 12px;
+  bottom: 68px; }
+/*  position: absolute;
+}*/
+
+.label-box {
+  text-transform: uppercase;
+  display: block;
+  font-size: 1.1rem;
+  text-decoration: none;
+  font-weight: bold;
+  position: relative;
+  z-index: 1;
+}
+.label-box::before{
+  content: '';
+  position: absolute;
+  width: 3em;
+  background: #DC143C;
+  height: .4em;
+  bottom: 0;
+  z-index: -1;
+  margin-left: -.3em;
+}
+label {
+  color:white;
+  font-size: 1rem;
+  display: block;
+  margin-bottom: .5em;
+}
