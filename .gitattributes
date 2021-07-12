@@ -2,3 +2,5 @@ smabuz/static/* linguist-vendored
 smabuz/templates/* linguist-vendored
 smabuz/static/assets/css/* linguist-vendored
 smabuz/static/assets/js/ * linguist-vendored
+smabuz/static/assets/js/core * linguist-vendored
+smabuz/static/assets/js/plugins * linguist-vendored
