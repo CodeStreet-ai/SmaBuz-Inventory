@@ -27,14 +27,21 @@ python3 -m venv <your env name>
 ```shell
 pip install -r "requirements.txt"
 ```
-
-### 6. Run Locally:
+### 6. Install [phpMyAdmin](https://www.phpmyadmin.net/downloads/)
+Establish MySql Connection and create database
 ```shell
 cd smabuz
+python3
+from models import *
+db.create_all()
+db.session.commit()
+```
+### 7. Run Locally:
+```shell
 python3 main.py
 ```
 
-### 7. Copy below links to your browser:
+### 8. Copy below links to your browser:
 To see home page:
 ```html
 http://localhost:5000  
