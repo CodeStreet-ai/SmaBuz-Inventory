@@ -1,2 +1,5 @@
-smabuz/static/* linguist-detectable=false
-smabuz/templates/* linguist-detectable=false
+*.css linguist-vendored
+*.js.map linguist-vendored
+*.js linguist-vendored
+*.min.js linguist-vendored
+*.html linguist-vendored
