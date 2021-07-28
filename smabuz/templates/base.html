@@ -8,7 +8,7 @@
       <div class="container">
         <div class="navbar-translate">
           <a><img width="50" height="50" alt="icon" src="https://www.flaticon.com/svg/static/icons/svg/2835/2835657.svg"></a>
-          <a class="navbar-brand" href="#" rel="tooltip" data-placement="bottom" target="_blank">
+          <a class="navbar-brand" href="{ url_for('base')}" rel="tooltip" data-placement="bottom" target="_blank">
             SMABUZ INVENTORY
           </a>
           <button class="navbar-toggler navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
@@ -75,8 +75,8 @@
           <div class="row">
           </div>
         </div>
+      {% include "includes/footer.html" %}  
       </div>
-      {% include "includes/footer.html" %}
     </div>
     {% include "includes/script.html" %}
   </body>

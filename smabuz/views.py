@@ -5,7 +5,7 @@ from models import *
 
 
 global COOKIE_TIME_OUT
-COOKIE_TIME_OUT = 60 *1000 #6000 SECONDS COOKIE_TIME_OUT
+COOKIE_TIME_OUT = 1800 #30 minutes timeout
 
 
 #WELCOME PAGE
