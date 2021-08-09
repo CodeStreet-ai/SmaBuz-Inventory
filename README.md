@@ -4,7 +4,7 @@ Inventory management systems for small businesses.
 
 ## Development
 ---
-### 1. clone the git repo:
+### 1. Clone the git repo:
 ```shell
 git clone git@github.com:CodeStreet-ai/SmaBuz-Inventory.git
 ```
