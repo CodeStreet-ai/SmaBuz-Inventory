@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  {% include "includes/static.html"%}
+</head>
+
+<body>
+  <div class="wrapper ">
+    <div class="sidebar" data-color="blue">
+      <!--
+        Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
+    -->
+      <div class="logo">
+        <a href="#" class="simple-text logo-mini">
+          <img alt="icon" src="https://www.flaticon.com/svg/static/icons/svg/2835/2835657.svg">
+        </a>
+        <a href="#" class="simple-text logo-normal">
+          SMABUZ Inventory
+        </a>
+      </div>
+      <div class="sidebar-wrapper" id="sidebar-wrapper">
+        <ul class="nav">
+          <li>
+            <a href="{{ url_for('index') }}">
+              <i class="now-ui-icons design_app"></i>
+              <p>Dashboard</p>
+            </a>
+          </li>
+          <li class="active ">
+            <a href="{{ url_for('tables') }}">
+              <i class="now-ui-icons design_bullet-list-67"></i>
+              <p> Product Tables</p>
+            </a>
+          </li>
+          <li >
+            <a href="{{ url_for('profile') }}">
+              <i class="now-ui-icons users_single-02"></i>
+              <p>User Profile</p>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="main-panel" id="main-panel">
+      <!-- Navbar -->
+      {% include  "includes/sidenav.html" %}
+      <!-- End Navbar -->
+      <div class="panel-header panel-header-sm">
+      </div>
+      <div class="content">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-header">
+                <h5 class="title">Products</h5>
+              </div>
+
+            {% with messages = get_flashed_messages() %}
+                {%  if messages %}
+                  {% for messages in messages %}
+                  <div class="alert alert-success" role="alert">
+                    <div class="container">
+                      <strong>Success!</strong> {{ messages }}
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">
+                          <i class="now-ui-icons ui-1_simple-remove"></i>
+                        </span>
+                      </button>
+                    </div>
+                  </div>
+                  {% endfor %}
+                {% endif %}
+            {% endwith %}
+              <!-- Add Products Entries-->
+              <form class="form-group row" action="{{ url_for('tables') }}" method="POST" style="margin:auto;">
+              <div class="col-xs-3" >
+                <input type="text-form" class="form-control" name="code" placeholder="Id" required=1 />
+              </div>
+              <div class="col-xs-3" >
+              <input type="text-form" class="form-control" name="name" placeholder="Name"required=1 />
+            </div>
+              <div class="col-xs-3" >
+                <input type="text-form" class="form-control" name="quantity" placeholder="Quantity" required=1 />
+              </div>
+              <div class="col-xs-3" >
+                <input type="text-form"class="form-control" name="price" placeholder="Price" required=1/>
+              </div>
+              <div class="col-xs-3" >
+                <button type="submit-form" class="form-control" onClick="alert('Submitted')">Submit</button>
+              </div>
+              </form>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table">
+                <thead class="text-primary">
+                  <th><input type="checkbox" onclick="CheckAll (this)"></th>
+                  <th>Id</th>
+                  <th>Name</th>
+                  <th>Quantity</th>
+                  <th>Price</th>
+                  <th class=text-right>Actions</th>
+                </thead>
+                {% for row in products.items %}
+
+                <tbody>
+                  <tr>
+                  <td><input type="checkbox" name=""></td>
+                  <td>{{row.code}}</td>
+                  <td>{{row.name}}</td>
+                  <td>{{row.quantity}}</td>
+                  <td>&#8358;{{row.price}}</td>
+                  <th class="text-right">
+                    <a href="/tables/{{row.id}}" class="btn-warning" data-toggle="modal" data-target="#modaledit{{row.id}}">Edit</a>
+                    <a href="/delete/{{row.id}}" class="btn-danger" onclick="return confirm('Are you sure to delete ?')">Delete</a>
+                  </th>
+                </tr>
+                <!-- Edit PRODUCTS-->
+                <div id="modaledit{{row.id}}" class="modal fade" role='dialog' aria-labelledby="myModalLabel" aria-hidden="true" tabindex="-1">
+                    <div class="modal-dialog" role="form">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title">Edit Entries</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                      </div>
+                        <div class="modal-body">
+                          <form action="{{url_for('update')}}" method="POST">
+                            <div class="form-row">
+                              <div class="col">
+                                <input type="hidden" name="id" value="{{row.id}}">
+                                <input class="form-control" name="code" placeholder="Id" required=1 value="{{row.code}}" />
+                              </div>
+                              <div class="col">
+                                <input class="form-control" name="name" placeholder="Name"required=1 value="{{row.name}}"/>
+                              </div>
+                              <div class="col">
+                                <input class="form-control" name="quantity" placeholder="Quantity" required=1 value="{{row.quantity}}"/>
+                              </div>
+                              <div class="col">
+                                <input class="form-control" name="price" placeholder="Price" required=1 value="{{row.price}}"/>
+                              </div>
+                            </div>
+                    </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-defult btn-simple" data-dismiss="modal">Close</button>
+                    <button class="btn btn-info btn-simple"  onClick="alert('Submitted')">Save</button>
+                  </div>
+                  </form>
+                  </div>
+                  </div>
+                </div>
+
+                {% endfor %}
+
+                </tbody>
+              </table>
+              <nav aria-label="...">
+                <ul class="pagination">
+
+                  {% if products.has_prev %}
+                  <li class="page-item"><a class="page-link" href="{{ url_for('tables' , page=products.prev_num) }}">Previous</a></li>
+                  {% else %}
+                  <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
+                  {% endif %}
+
+                  {% for page in products.iter_pages(left_edge=3, right_edge=3) %}
+                  {% if page %}
+                    {% if page == products.page %}
+                        <li class="page-item active"><a class="page-link" href="{{ url_for('tables', page=page) }}">{{ page }}<a/></li>
+                    {% else %}
+                        <li class="page-item"><a class="page-link" href="{{ url_for('tables', page=page) }}">{{ page }}<a/></li>
+                    {% endif %}
+
+                  {% else %}
+                  <li class="page-item disabled" id="example_ellipsis"><a href="#" class="page-link">...<a/></li>
+                  {% endif %}
+                  {% endfor %}
+
+                  {% if products.has_next %}
+                  <li class="page-item"><a class="page-link" href="{{ url_for('tables' , page=products.next_num) }}">Next</a></li>
+                  {% else %}
+                  <li class="page-item disabled"><a class="page-link" href="#">Next</a></li>
+                  {% endif %}
+                </ul>
+
+              </nav>
+            </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+  </div>
+{% include "includes/footer.html" %}
+  </div>
+</div>
+<!--checkbox script-->
+<script type="text/javascript">
+  function CheckAll(box) {
+    var cbs = document.getElementsByTagName('input');
+    for(var i=0; i < cbs.length; i++) {
+      if (cbs[i].type == 'checkbox') {
+        cbs[i].checked = box.checked;
+      }
+    }
+  }
+
+
+</script>
+
+{% include "includes/script.html" %}
+</body>
+
+</html>

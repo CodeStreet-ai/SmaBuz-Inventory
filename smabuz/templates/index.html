@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+{% include "includes/static.html"%}
+</head>
+
+<body>
+  <div class="wrapper ">
+    <div class="sidebar" data-color="blue">
+      <!--
+        Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"-->
+
+        <div class="logo">
+          <a href="#" class="simple-text logo-mini">
+            <img alt="icon" src="https://www.flaticon.com/svg/static/icons/svg/2835/2835657.svg">
+          </a>
+          <a href="#" class="simple-text logo-normal">
+            SMABUZ Inventory
+          </a>
+        </div>
+      <div class="sidebar-wrapper" id="sidebar-wrapper">
+        <ul class="nav">
+          <li class="active ">
+            <a href="{{ url_for('index') }}">
+              <i class="now-ui-icons design_app"></i>
+              <p>Dashboard</p>
+            </a>
+          </li>
+          <li>
+            <a href="{{ url_for('tables') }}">
+              <i class="now-ui-icons design_bullet-list-67"></i>
+              <p>Product Tables</p>
+            </a>
+          </li>
+          <li>
+            <a href="{{ url_for('profile') }}">
+              <i class="now-ui-icons users_single-02"></i>
+              <p>Profile</p>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="main-panel" id="main-panel">
+            <!-- Navbar -->
+      {% include "includes/sidenav.html" %}
+      <!-- End Navbar -->
+      <div class="panel-header">
+        <div class="header text-center">
+          <h2 class="title">SMABUZ</h2>
+          <p class="category">A Business Inventory For Small Businesses. Please checkout the <a href="https://github.com/CodeStreet-ai/SmaBuz-Inventory" target="_blank">Project.</a></p>
+        </div>
+      </div>
+      <div class="content">
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="card card-chart">
+              <div class="card-header">
+                <h5 class="card-category">Products</h5>
+                <h4 class="card-title">Quantity</h4>
+              </div>
+              <div class="card-body text-center">
+                <div class="chart-area">
+                  <h1 >{{ products.count() }}</h1>
+                  <p class="description">TOTAL ENTRIES</p>
+                </div>
+              </div>
+              <div class="card-footer text-muted">
+                <div class="stats">
+                  <i class="now-ui-icons arrows-1_refresh-69"></i> Just Updated
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6">
+            <div class="card card-chart">
+              <div class="card-header">
+                <h5 class="card-category">Products</h5>
+                <h4 class="card-title">Prices</h4>
+              </div>
+              <div class="card-body text-center">
+                <div class="chart-area">
+
+                  <h1>&#8358;{{ sum_p }}</h1>
+                  <p class="description">TOTAL PER ENTRY</p>
+                </div>
+              </div>
+            <div class="card-footer">
+              <div class="stats">
+                <i class="now-ui-icons arrows-1_refresh-69"></i> Just Updated
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% include "includes/footer.html" %}
+</div>
+{% include "includes/script.html" %}
+
+</body>
+
+</html>

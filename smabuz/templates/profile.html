@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  {% include "includes/static.html"%}
+</head>
+
+<body class="user-profile">
+  <div class="wrapper ">
+    <div class="sidebar" data-color="blue">
+      <!--
+        Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
+    -->
+      <div class="logo">
+        <a href="#" class="simple-text logo-mini">
+          <img alt="icon" src="https://www.flaticon.com/svg/static/icons/svg/2835/2835657.svg">
+        </a>
+        <a href="#" class="simple-text logo-normal">
+          SMABUZ Inventory
+        </a>
+      </div>
+      <div class="sidebar-wrapper" id="sidebar-wrapper">
+        <ul class="nav">
+          <li>
+            <a href="{{ url_for('index') }}">
+              <i class="now-ui-icons design_app"></i>
+              <p>Dashboard</p>
+            </a>
+          </li>
+          <li class="nav">
+            <a href="{{ url_for('tables') }}">
+              <i class="now-ui-icons design_bullet-list-67"></i>
+              <p> Product Tables</p>
+            </a>
+          </li>
+          <li class="active ">
+            <a href="{{ url_for('profile')}}">
+              <i class="now-ui-icons users_single-02"></i>
+              <p>User Profile</p>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="main-panel" id="main-panel">
+      <!-- Navbar -->
+      {% include  "includes/sidenav.html" %}
+      <!-- End Navbar -->
+      <div class="panel-header panel-header-sm">
+      </div>
+      <div class="content">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-header">
+                <h5 class="title">Edit Profile</h5>
+              </div>
+              <div class="card-body">
+                <form action="{{ url_for('profile') }}">
+                  <div class="form-group row">
+                    <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
+                    <div class="col-sm-4">
+                      <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="{{ user_r.email }}">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+                    <div class="col-sm-4">
+                      <input type="password" class="form-control" id="inputPassword" placeholder="Password" disabled >
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      {% include "includes/footer.html" %}
+  </div>
+</div>
+{% include "includes/script.html" %}
+</html>

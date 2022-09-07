@@ -1,0 +1,23 @@
+{% include "includes/static2.html"%}
+
+{% block content %}
+    <div class="login-page">
+      <div class="form">
+          <div class="logo">
+            <a href="#">
+              <img alt="icon" width="50" height="50 "src="https://www.flaticon.com/svg/static/icons/svg/2835/2835657.svg">
+            </a>
+          </div>
+        <form class="login-form" action="{{ url_for('login_submit') }}" method="POST">
+          <input type="email" name="email"class="input-field" placeholder="Email"required>
+          <input type="password" name="password" class="input-field" placeholder="Password"required>
+          <input type="checkbox" name="remember"class="check-box"><span>Remember Password</span>
+          <button type="submit" class="submit-btn" name="button">Log In</button>
+        </form>
+      </div>
+    </div>
+
+    {% include "includes/footer.html" %}
+
+    {% include "includes/script.html" %}
+{% endblock %}
