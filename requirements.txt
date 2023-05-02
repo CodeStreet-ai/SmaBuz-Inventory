@@ -1,4 +1,4 @@
-flask == 2.0.1
+flask == 2.2.5
 flask_sqlalchemy == 2.5.1
 python-dotenv == 0.18.0
 pytest == 6.2.4
